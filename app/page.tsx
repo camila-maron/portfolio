@@ -367,8 +367,8 @@ export default function Portfolio() {
               <Link
                 href={
                   t('nav.resume') === 'CV'
-                    ? '/CV - Camila Maron.pdf'
-                    : '/Resume - Camila Maron.pdf'
+                    ? 'https://drive.google.com/file/d/1O0MQhYAGgfBPS75vTOcbnuJPaar3L2JQ/view?usp=drive_link'
+                    : 'https://drive.google.com/file/d/1toHLE-hmMlPVHnFQodBz9fOl-ZVbtYZT/view?usp=drive_link'
                 }
                 target="_blank"
                 rel="noopener noreferrer"
@@ -448,14 +448,11 @@ export default function Portfolio() {
                 <Link
                   href={
                     t('nav.resume') === 'CV'
-                      ? '/CV - Camila Maron.pdf'
-                      : '/Resume - Camila Maron.pdf'
+                      ? 'https://drive.google.com/file/d/1O0MQhYAGgfBPS75vTOcbnuJPaar3L2JQ/view?usp=drive_link'
+                      : 'https://drive.google.com/file/d/1toHLE-hmMlPVHnFQodBz9fOl-ZVbtYZT/view?usp=drive_link'
                   }
-                  download={
-                    t('nav.resume') === 'CV'
-                      ? 'CV - Camila Maron.pdf'
-                      : 'Resume - Camila Maron.pdf'
-                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Download className="mr-2 h-4 w-4" />
                   {t('nav.resume')}
@@ -756,32 +753,6 @@ export default function Portfolio() {
                         {project.type}
                       </div>
                     </div>
-                    <div className="flex space-x-2 flex-shrink-0 ml-4">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-slate-400 hover:text-white hover:bg-slate-800 h-8 w-8 md:h-10 md:w-10"
-                        asChild
-                      >
-                        <Link href={project.github} target="_blank">
-                          <Github className="h-4 w-4 md:h-5 md:w-5" />
-                          <span className="sr-only">{t('common.github')}</span>
-                        </Link>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-slate-400 hover:text-white hover:bg-slate-800 h-8 w-8 md:h-10 md:w-10"
-                        asChild
-                      >
-                        <Link href={project.live} target="_blank">
-                          <ExternalLink className="h-4 w-4 md:h-5 md:w-5" />
-                          <span className="sr-only">
-                            {t('common.liveDemo')}
-                          </span>
-                        </Link>
-                      </Button>
-                    </div>
                   </div>
                   <p className="text-slate-300 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
                     {project.description}
@@ -824,34 +795,6 @@ export default function Portfolio() {
                         <div className="text-xs text-purple-400">
                           {project.type}
                         </div>
-                      </div>
-                      <div className="flex space-x-1 flex-shrink-0 ml-4">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-8 w-8 text-slate-400 hover:text-white hover:bg-slate-800"
-                          asChild
-                        >
-                          <Link href={project.github} target="_blank">
-                            <Github className="h-4 w-4" />
-                            <span className="sr-only">
-                              {t('common.github')}
-                            </span>
-                          </Link>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-8 w-8 text-slate-400 hover:text-white hover:bg-slate-800"
-                          asChild
-                        >
-                          <Link href={project.live} target="_blank">
-                            <ExternalLink className="h-4 w-4" />
-                            <span className="sr-only">
-                              {t('common.liveDemo')}
-                            </span>
-                          </Link>
-                        </Button>
                       </div>
                     </div>
                   </CardHeader>
