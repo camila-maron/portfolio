@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is the professional portfolio of Camila Maron, a Full Stack Developer with 7+ years of experience in designing, developing, and maintaining scalable enterprise applications across healthcare, gaming, and business domains. The portfolio showcases skills, experience, selected projects, and contact information, and is available in both English and Spanish.
+This is the professional portfolio of Camila Maron, a Full Stack Developer with 8+ years of experience in designing, developing, and maintaining scalable enterprise applications across healthcare, gaming, and business domains. The portfolio showcases skills, experience, selected projects, and contact information, and is available in both English and Spanish.
 
 **Live Site:** [https://camilamaron.vercel.app](https://camilamaron.vercel.app)
 

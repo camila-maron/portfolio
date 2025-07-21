@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Camila Maron - Full Stack Developer',
   description:
-    'Software Developer with 7+ years of experience designing, developing, and maintaining scalable enterprise applications across healthcare, gaming, and business domains.',
+    'Software Developer with 8+ years of experience designing, developing, and maintaining scalable enterprise applications across healthcare, gaming, and business domains.',
   generator: 'v0.dev',
   icons: {
     icon: '/favicon.ico',
