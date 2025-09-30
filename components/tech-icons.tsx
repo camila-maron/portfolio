@@ -1,157 +1,12 @@
-import {
-  Code2,
-  Database,
-  Globe,
-  Server,
-  Smartphone,
-  Cloud,
-  GitBranch,
-  Palette,
-  Zap,
-  Shield,
-  Layers,
-  Box,
-} from "lucide-react"
+"use client"
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-
-// Technology icon mapping
-export const techIcons: Record<string, { icon: any; color: string; bgColor: string }> = {
-  // Frontend
-  React: { icon: Code2, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  "Next.js": { icon: Globe, color: "text-gray-800 dark:text-gray-200", bgColor: "bg-gray-100 dark:bg-gray-800/20" },
-  "Vue.js": { icon: Code2, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-950/20" },
-  TypeScript: { icon: Code2, color: "text-blue-700", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  "Tailwind CSS": { icon: Palette, color: "text-cyan-600", bgColor: "bg-cyan-50 dark:bg-cyan-950/20" },
-  JavaScript: { icon: Zap, color: "text-yellow-600", bgColor: "bg-yellow-50 dark:bg-yellow-950/20" },
-
-  // Backend
-  "Node.js": { icon: Server, color: "text-green-700", bgColor: "bg-green-50 dark:bg-green-950/20" },
-  Python: { icon: Code2, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  Express: { icon: Server, color: "text-gray-700", bgColor: "bg-gray-100 dark:bg-gray-800/20" },
-  FastAPI: { icon: Zap, color: "text-teal-600", bgColor: "bg-teal-50 dark:bg-teal-950/20" },
-  "REST APIs": { icon: Globe, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-950/20" },
-  GraphQL: { icon: Layers, color: "text-pink-600", bgColor: "bg-pink-50 dark:bg-pink-950/20" },
-
-  // Database
-  PostgreSQL: { icon: Database, color: "text-blue-700", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  MongoDB: { icon: Database, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-950/20" },
-  Redis: { icon: Database, color: "text-red-600", bgColor: "bg-red-50 dark:bg-red-950/20" },
-  Supabase: { icon: Database, color: "text-emerald-600", bgColor: "bg-emerald-50 dark:bg-emerald-950/20" },
-  Prisma: { icon: Database, color: "text-indigo-600", bgColor: "bg-indigo-50 dark:bg-indigo-950/20" },
-  Firebase: { icon: Database, color: "text-orange-600", bgColor: "bg-orange-50 dark:bg-orange-950/20" },
-
-  // Mobile
-  "React Native": { icon: Smartphone, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  Flutter: { icon: Smartphone, color: "text-blue-500", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  iOS: { icon: Smartphone, color: "text-gray-700", bgColor: "bg-gray-100 dark:bg-gray-800/20" },
-  Android: { icon: Smartphone, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-950/20" },
-  Expo: { icon: Smartphone, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-950/20" },
-
-  // DevOps & Cloud
-  Docker: { icon: Box, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-  AWS: { icon: Cloud, color: "text-orange-600", bgColor: "bg-orange-50 dark:bg-orange-950/20" },
-  "AWS S3": { icon: Cloud, color: "text-orange-600", bgColor: "bg-orange-50 dark:bg-orange-950/20" },
-  Vercel: { icon: Globe, color: "text-gray-800 dark:text-gray-200", bgColor: "bg-gray-100 dark:bg-gray-800/20" },
-  "GitHub Actions": { icon: GitBranch, color: "text-gray-700", bgColor: "bg-gray-100 dark:bg-gray-800/20" },
-  "CI/CD": { icon: GitBranch, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-950/20" },
-
-  // Design & Tools
-  Figma: { icon: Palette, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-950/20" },
-  "Adobe XD": { icon: Palette, color: "text-pink-600", bgColor: "bg-pink-50 dark:bg-pink-950/20" },
-  "UI/UX": { icon: Palette, color: "text-indigo-600", bgColor: "bg-indigo-50 dark:bg-indigo-950/20" },
-  "Responsive Design": { icon: Smartphone, color: "text-teal-600", bgColor: "bg-teal-50 dark:bg-teal-950/20" },
-
-  // Payment & Auth
-  Stripe: { icon: Shield, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-950/20" },
-
-  // Real-time & Communication
-  "Socket.io": { icon: Zap, color: "text-green-600", bgColor: "bg-green-50 dark:bg-green-950/20" },
-  WebSocket: { icon: Zap, color: "text-blue-600", bgColor: "bg-blue-50 dark:bg-blue-950/20" },
-
-  // AI & APIs
-  "OpenAI API": { icon: Zap, color: "text-emerald-600", bgColor: "bg-emerald-50 dark:bg-emerald-950/20" },
-
-  // Data Visualization
-  "D3.js": { icon: Layers, color: "text-orange-600", bgColor: "bg-orange-50 dark:bg-orange-950/20" },
-  "Chart.js": { icon: Layers, color: "text-pink-600", bgColor: "bg-pink-50 dark:bg-pink-950/20" },
-
-  // State Management
-  Redux: { icon: Box, color: "text-purple-600", bgColor: "bg-purple-50 dark:bg-purple-950/20" },
-
-  // CMS
-  Strapi: { icon: Server, color: "text-indigo-600", bgColor: "bg-indigo-50 dark:bg-indigo-950/20" },
-}
+import { cn } from "@/lib/utils"
 
 interface TechIconProps {
   tech: string
   size?: "sm" | "md" | "lg"
   showLabel?: boolean
-}
-
-export function TechIcon({ tech, size = "md", showLabel = true }: TechIconProps) {
-  const techData = techIcons[tech]
-
-  if (!techData) {
-    // Fallback for unknown technologies
-    const fallbackContent = (
-      <div
-        className={`inline-flex items-center gap-1 px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-medium`}
-      >
-        <Code2 className="h-3 w-3" />
-        {showLabel && <span>{tech}</span>}
-      </div>
-    )
-
-    return showLabel ? (
-      fallbackContent
-    ) : (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>{fallbackContent}</TooltipTrigger>
-          <TooltipContent>
-            <p>{tech}</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    )
-  }
-
-  const { icon: Icon, color, bgColor } = techData
-
-  const sizeClasses = {
-    sm: "h-3 w-3",
-    md: "h-4 w-4",
-    lg: "h-5 w-5",
-  }
-
-  const containerClasses = {
-    sm: "px-2 py-1 text-xs",
-    md: "px-2.5 py-1.5 text-xs",
-    lg: "px-3 py-2 text-sm",
-  }
-
-  const iconContent = (
-    <div
-      className={`inline-flex items-center gap-1.5 rounded-md font-medium transition-all duration-200 hover:scale-105 cursor-default ${bgColor} ${containerClasses[size]}`}
-    >
-      <Icon className={`${sizeClasses[size]} ${color}`} />
-      {showLabel && <span className={color}>{tech}</span>}
-    </div>
-  )
-
-  return showLabel ? (
-    iconContent
-  ) : (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>{iconContent}</TooltipTrigger>
-        <TooltipContent>
-          <p>{tech}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  )
 }
 
 interface TechIconGridProps {
@@ -161,21 +16,120 @@ interface TechIconGridProps {
   showLabels?: boolean
 }
 
+const techColors: Record<string, { bg: string; text: string; icon?: string }> = {
+  // Frontend
+  JavaScript: { bg: "bg-yellow-500/10", text: "text-yellow-400" },
+  TypeScript: { bg: "bg-blue-500/10", text: "text-blue-400" },
+  React: { bg: "bg-cyan-500/10", text: "text-cyan-400" },
+  "React Native": { bg: "bg-cyan-600/10", text: "text-cyan-500" },
+  "Next.js": { bg: "bg-slate-500/10", text: "text-slate-300" },
+  Redux: { bg: "bg-purple-500/10", text: "text-purple-400" },
+  "Vue.js": { bg: "bg-emerald-500/10", text: "text-emerald-400" },
+  Tailwind: { bg: "bg-cyan-400/10", text: "text-cyan-300" },
+
+  // Backend
+  "Node.js": { bg: "bg-green-500/10", text: "text-green-400" },
+  "Express.js": { bg: "bg-gray-500/10", text: "text-gray-300" },
+  Java: { bg: "bg-red-500/10", text: "text-red-400" },
+  PHP: { bg: "bg-indigo-500/10", text: "text-indigo-400" },
+  "REST APIs": { bg: "bg-orange-500/10", text: "text-orange-400" },
+  "Nest.js": { bg: "bg-red-600/10", text: "text-red-500" },
+  FastAPI: { bg: "bg-teal-500/10", text: "text-teal-400" },
+  Python: { bg: "bg-blue-600/10", text: "text-blue-500" },
+  Prisma: { bg: "bg-slate-600/10", text: "text-slate-400" },
+
+  // Database
+  MySQL: { bg: "bg-blue-500/10", text: "text-blue-400" },
+  MongoDB: { bg: "bg-green-600/10", text: "text-green-500" },
+  "SQL Server": { bg: "bg-red-600/10", text: "text-red-500" },
+  PostgreSQL: { bg: "bg-blue-600/10", text: "text-blue-500" },
+  Redis: { bg: "bg-red-500/10", text: "text-red-400" },
+  Supabase: { bg: "bg-emerald-500/10", text: "text-emerald-400" },
+
+  // Testing
+  Jest: { bg: "bg-red-500/10", text: "text-red-400" },
+  "React Testing Library": { bg: "bg-red-600/10", text: "text-red-500" },
+  Cypress: { bg: "bg-green-500/10", text: "text-green-400" },
+
+  // Cloud & DevOps
+  AWS: { bg: "bg-orange-500/10", text: "text-orange-400" },
+  Azure: { bg: "bg-blue-500/10", text: "text-blue-400" },
+  Docker: { bg: "bg-blue-600/10", text: "text-blue-500" },
+  Git: { bg: "bg-orange-600/10", text: "text-orange-500" },
+  "Google Cloud": { bg: "bg-red-500/10", text: "text-red-400" },
+  Kubernetes: { bg: "bg-blue-500/10", text: "text-blue-400" },
+  Vercel: { bg: "bg-slate-500/10", text: "text-slate-300" },
+
+  // Tools & Design
+  Bootstrap: { bg: "bg-purple-500/10", text: "text-purple-400" },
+  "Ant Design": { bg: "bg-blue-500/10", text: "text-blue-400" },
+  Postman: { bg: "bg-orange-500/10", text: "text-orange-400" },
+  Jira: { bg: "bg-blue-600/10", text: "text-blue-500" },
+  Swagger: { bg: "bg-green-500/10", text: "text-green-400" },
+  DeepSeek: { bg: "bg-purple-600/10", text: "text-purple-500" },
+  Figma: { bg: "bg-pink-500/10", text: "text-pink-400" },
+  "Adobe XD": { bg: "bg-pink-600/10", text: "text-pink-500" },
+
+  // Mobile
+  Expo: { bg: "bg-slate-600/10", text: "text-slate-400" },
+  Firebase: { bg: "bg-yellow-500/10", text: "text-yellow-400" },
+  Flutter: { bg: "bg-blue-500/10", text: "text-blue-400" },
+
+  // Other
+  "OpenAI API": { bg: "bg-green-500/10", text: "text-green-400" },
+  "Socket.io": { bg: "bg-slate-500/10", text: "text-slate-300" },
+  WebRTC: { bg: "bg-blue-500/10", text: "text-blue-400" },
+  Ethereum: { bg: "bg-purple-500/10", text: "text-purple-400" },
+  Solidity: { bg: "bg-gray-500/10", text: "text-gray-300" },
+  "Web3.js": { bg: "bg-orange-500/10", text: "text-orange-400" },
+  IPFS: { bg: "bg-cyan-500/10", text: "text-cyan-400" },
+  "D3.js": { bg: "bg-orange-600/10", text: "text-orange-500" },
+}
+
+const sizeClasses = {
+  sm: "px-2 py-1 text-xs",
+  md: "px-3 py-1.5 text-sm",
+  lg: "px-4 py-2 text-base",
+}
+
+export function TechIcon({ tech, size = "md", showLabel = true }: TechIconProps) {
+  const colors = techColors[tech] || {
+    bg: "bg-slate-500/10",
+    text: "text-slate-400",
+  }
+
+  const content = (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-full border border-slate-700/50 font-medium transition-all hover:scale-105",
+        colors.bg,
+        colors.text,
+        sizeClasses[size],
+      )}
+    >
+      {showLabel ? tech : tech.charAt(0)}
+    </span>
+  )
+
+  if (!showLabel) {
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>{content}</TooltipTrigger>
+          <TooltipContent>
+            <p>{tech}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    )
+  }
+
+  return content
+}
+
 export function TechIconGrid({ technologies, maxVisible, size = "md", showLabels = true }: TechIconGridProps) {
   const visibleTechs = maxVisible ? technologies.slice(0, maxVisible) : technologies
   const remainingCount = maxVisible ? technologies.length - maxVisible : 0
-
-  const remainingTooltipContent =
-    maxVisible && remainingCount > 0 ? (
-      <div className="space-y-1">
-        <p className="font-medium">Additional Technologies:</p>
-        {technologies.slice(maxVisible).map((tech, index) => (
-          <p key={index} className="text-sm">
-            {tech}
-          </p>
-        ))}
-      </div>
-    ) : null
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -186,13 +140,22 @@ export function TechIconGrid({ technologies, maxVisible, size = "md", showLabels
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div
-                className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md bg-gray-100 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400 transition-all duration-200 hover:scale-105 cursor-default hover:bg-gray-200 dark:hover:bg-gray-700`}
+              <span
+                className={cn(
+                  "inline-flex items-center rounded-full border border-slate-700/50 bg-slate-500/10 text-slate-400 font-medium cursor-help",
+                  sizeClasses[size],
+                )}
               >
                 +{remainingCount}
-              </div>
+              </span>
             </TooltipTrigger>
-            <TooltipContent>{remainingTooltipContent}</TooltipContent>
+            <TooltipContent>
+              <div className="space-y-1">
+                {technologies.slice(maxVisible).map((tech, index) => (
+                  <p key={index}>{tech}</p>
+                ))}
+              </div>
+            </TooltipContent>
           </Tooltip>
         </TooltipProvider>
       )}
