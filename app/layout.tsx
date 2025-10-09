@@ -13,11 +13,8 @@ export const metadata: Metadata = {
   generator: "v0.dev",
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/svg+xml" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
 }
 
@@ -29,11 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" type="image/svg+xml" />
-        <link rel="icon" href="/icon-192.png" sizes="192x192" type="image/png" />
-        <link rel="icon" href="/icon-512.png" sizes="512x512" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-        <meta name="theme-color" content="#10b981" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta name="theme-color" content="#a855f7" />
       </head>
       <body className={inter.className}>
         <LanguageProvider>{children}</LanguageProvider>
